@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withHNApiService } from '../../services/HNApiService';
+import Story from './Story';
 
 class Stories extends Component {
   state = {};
@@ -15,13 +16,13 @@ class Stories extends Component {
   render() {
     return (
       <>
-        <ul>
+        <div className="accordion" id="accordionExample">
           {this.state.stories
             ? this.state.stories.map(topStory => (
-                <li key={topStory.id}> {topStory.title} </li>
+                <Story key={topStory.id} story={topStory} />
               ))
             : null}
-        </ul>
+        </div>
       </>
     );
   }
