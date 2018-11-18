@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Comment from '../../Comment/Comment';
 import { extractTopCommentFromStory } from '../../../services/HNApiService';
 import './Story.css';
+/**
+ * Display a story and his comment object in a card layour
+ */
 class Story extends Component {
   state = {
     showDetails: false

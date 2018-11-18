@@ -1,8 +1,19 @@
 # HackerNews Top 10
 
-Display the top 10 Stories; and
+Display the top 10 Stories
 
 Display top 20 comments of those stories
+
+It uses :
+
+- [Hacker News API](https://github.com/HackerNews/API)
+- Higher order component to allow dependencies injection
+- bootstrap CSS to ease display
+- nock and enzyme for testing
+
+TODO :
+
+- Convert it in order to use TypeScript
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

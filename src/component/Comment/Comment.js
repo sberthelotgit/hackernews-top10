@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { withHNApiService } from '../../services/HNApiService';
 import './Comment.css';
 
+/**
+ * Display Comment object in a card layout
+ */
 class Comment extends Component {
   state = {};
 

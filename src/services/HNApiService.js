@@ -11,7 +11,14 @@ export const extractTopCommentFromStory = story => {
   return story.kids ? story.kids.slice(0, defaultTopCommentSize) : [];
 };
 
+/**
+ * This service allow simple HN Api data fetch.
+ */
 export class HNApiService {
+  /**
+   * Return the top stories from the HN Api
+   * @param {number} topSize Used to limit result
+   */
   getTopStories(topSize = defaultTopSize) {
     return fetch(`${baseUrl}/${topstoriesEndPoint}.json`)
       .then(res => res.json())
@@ -21,10 +28,18 @@ export class HNApiService {
       .catch(console.error);
   }
 
+  /**
+   * fetch the comment from a given commentId
+   * @param {number} commentId
+   */
   getComment(commentId) {
     return this.getItem(commentId);
   }
 
+  /**
+   * Call the HN API to fetch the item of the given id
+   * @param {number} itemId
+   */
   async getItem(itemId) {
     try {
       const item = await fetch(`${baseUrl}/${itemEndPoint}/${itemId}.json`);
