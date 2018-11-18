@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
-import { defaultTopCommentSize } from '../../constants';
 import Comment from './Comment';
+import { extractTopCommentFromStory } from '../../services/HNApiService';
 
 class Story extends Component {
   state = {
-    show: false
+    showDetails: false
   };
 
   render() {
+    let comments = extractTopCommentFromStory(this.props.story);
+    if (comments.length === 0) {
+      comments = 'No Comment';
+    } else {
+      comments = comments.map(commentId => (
+        <Comment key={commentId} commentId={commentId} />
+      ));
+    }
     return (
       <div className="card">
         <div
           className="card-header"
           id="headingOne"
-          onClick={() => this.setState({ show: !this.state.show })}
+          onClick={() =>
+            this.setState({ showDetails: !this.state.showDetails })
+          }
         >
           <h5 className="mb-0">{this.props.story.title}</h5>
         </div>
-        {this.state.show ? (
+        {this.state.showDetails ? (
           <div className="collapse show">
             <div className="card-body">
               <div className="row">
@@ -33,13 +43,7 @@ class Story extends Component {
                   padding: '1rem'
                 }}
               >
-                {this.props.story.kids
-                  ? this.props.story.kids
-                      .slice(0, defaultTopCommentSize)
-                      .map(commentId => (
-                        <Comment key={commentId} commentId={commentId} />
-                      ))
-                  : 'No Comments'}
+                {comments}
               </div>
             </div>
           </div>

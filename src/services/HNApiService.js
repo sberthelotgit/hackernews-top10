@@ -3,8 +3,13 @@ import {
   baseUrl,
   itemEndPoint,
   topstoriesEndPoint,
-  defaultTopSize
+  defaultTopSize,
+  defaultTopCommentSize
 } from '../constants';
+
+export const extractTopCommentFromStory = story => {
+  return story.kids ? story.kids.slice(0, defaultTopCommentSize) : [];
+};
 
 export class HNApiService {
   fetchTopStorie(topSize = defaultTopSize) {
@@ -22,7 +27,9 @@ export class HNApiService {
 
   async getItem(itemId) {
     try {
-      const item = await fetch(`${baseUrl}/${itemEndPoint}/${itemId}.json`);
+      const item = await fetch(
+        `${baseUrl}/${itemEndPoint}/${itemId}.json?deleted=false`
+      );
       return item.json();
     } catch (error) {
       console.error(error);
