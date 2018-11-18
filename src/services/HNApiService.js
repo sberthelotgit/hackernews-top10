@@ -16,6 +16,10 @@ export class HNApiService {
       .catch(console.error);
   }
 
+  getComment(commentId) {
+    return this.getItem(commentId);
+  }
+
   async getItem(itemId) {
     try {
       const item = await fetch(`${baseUrl}/${itemEndPoint}/${itemId}.json`);
