@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withHNApiService } from '../../services/HNApiService';
+import './Comment.css';
 
 class Comment extends Component {
   state = {};
@@ -14,7 +15,7 @@ class Comment extends Component {
     return (
       <>
         {this.state.comment ? (
-          <div className="card" style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
+          <div className="card CommentCard">
             <div className="card-body">
               <h5 className="card-title">{this.state.comment.by}</h5>
               <div

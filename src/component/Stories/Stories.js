@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withHNApiService } from '../../services/HNApiService';
-import Story from './Story';
+import Story from './Story/Story';
 
 class Stories extends Component {
   state = {};
@@ -8,7 +8,7 @@ class Stories extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     this.props.hnApiService
-      .fetchTopStorie()
+      .getTopStories()
       .then(topStories =>
         this.setState({ stories: topStories, isLoading: false })
       );
@@ -16,13 +16,13 @@ class Stories extends Component {
   render() {
     return (
       <>
-        <div className="accordion" id="accordionExample">
-          {this.state.stories
-            ? this.state.stories.map(topStory => (
+        {this.state.stories
+          ? this.state.stories.map(topStory => (
+              <div className="my-1">
                 <Story key={topStory.id} story={topStory} />
-              ))
-            : null}
-        </div>
+              </div>
+            ))
+          : null}
       </>
     );
   }

@@ -12,7 +12,7 @@ export const extractTopCommentFromStory = story => {
 };
 
 export class HNApiService {
-  fetchTopStorie(topSize = defaultTopSize) {
+  getTopStories(topSize = defaultTopSize) {
     return fetch(`${baseUrl}/${topstoriesEndPoint}.json`)
       .then(res => res.json())
       .then(topStories => topStories.slice(0, topSize))
