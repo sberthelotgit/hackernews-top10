@@ -27,9 +27,7 @@ export class HNApiService {
 
   async getItem(itemId) {
     try {
-      const item = await fetch(
-        `${baseUrl}/${itemEndPoint}/${itemId}.json?deleted=false`
-      );
+      const item = await fetch(`${baseUrl}/${itemEndPoint}/${itemId}.json`);
       return item.json();
     } catch (error) {
       console.error(error);
