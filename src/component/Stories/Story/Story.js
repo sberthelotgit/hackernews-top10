@@ -16,6 +16,7 @@ class Story extends Component {
       <div className="card">
         <div
           className="card-header"
+          style={{ cursor: 'pointer' }}
           onClick={() =>
             this.setState({ showDetails: !this.state.showDetails })
           }
