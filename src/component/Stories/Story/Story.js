@@ -9,12 +9,10 @@ class Story extends Component {
 
   render() {
     let comments = extractTopCommentFromStory(this.props.story);
-
     return (
       <div className="card">
         <div
           className="card-header"
-          id="headingOne"
           onClick={() =>
             this.setState({ showDetails: !this.state.showDetails })
           }
